@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SummatorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-06-09T19:36:31" hostname="LAPTOP-HNUB4G45" time="0.002">
+  <properties/>
+  <testcase name="negativeNumbersTest" classname="SummatorTest" time="0.002"/>
+  <testcase name="positiveNumbersTest" classname="SummatorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
