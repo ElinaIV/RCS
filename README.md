@@ -70,3 +70,47 @@
   
   # 2. Dependences management
   
+  В данном проекте рассматривается менеджмент зависимостей между двумя проектами, один из которых собран с помощью Gradle.
+  SimpleProjectOne собран с помощью Gradle, так же для него создан JAR-артефакт, который мы будем подключать к проекту TestProject, чтобы в нем использовать код первого проекта.
+  JAR-артефакт создается с помощью такого блока в файле build.gradle 
+  
+  ```Java
+  jar {
+    manifest {
+        attributes "Main-Class": "Summator"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+  }
+  ```
+  После чего сам джарник можно найти по пути build/libs/SimpleProjectOne-1.0-SNAPSHOT.jar из проекта.
+  SimpleProjectOne представляет из себя класс, имеющий единственный метод сложения двух целых чисел. Также у него есть пара тестов.
+  Создадим второй проект TestProject, собранный с помощью Maven - проект этот пустой и мы будем в нем проверять только код из первого проекта.
+  Как же нам подключить Gradle-проект? 
+  ### - для начала установим джарник в локальный репозиторий Maven в проекте TestProject с помощью команды 
+  
+  ```Java
+  mvn install:install-file 
+  -Dfile=C:\Users\HP\Desktop\SimpleProjectOne\build\libs\SimpleProjectOne-1.0-SNAPSHOT.jar 
+  -DgroupId=test.class 
+  -DartifactId=test-class 
+  -Dversion=1.0 
+  -Dpackaging=jar 
+  -DgeneratePom=true 
+  ```
+  ![image](https://user-images.githubusercontent.com/49618499/121589087-56074700-ca3f-11eb-82c1-b3ce674fe3fa.png)
+
+  ### - после выполнения команды осталось только подключить необходимую зависимость в Maven
+  
+  ![image](https://user-images.githubusercontent.com/49618499/121589244-85b64f00-ca3f-11eb-9630-b33f8ed18b63.png)
+  
+  Все! Теперь в проекте TestProject мы можем использовать код из проекта SimpleProjectOne!
+  Проверим это
+  
+  ![image](https://user-images.githubusercontent.com/49618499/121589468-c3b37300-ca3f-11eb-9c54-59f60a90b66a.png)
+  
+  
+
+  
