@@ -12,7 +12,8 @@
   ```Java
     public void setFileName(String fileName);
   ```
-  **CONSOLE** - говорит о том, что сообщения выводятся в консоль. 
+  **CONSOLE** - говорит о том, что сообщения выводятся в консоль.
+  
   ![image](https://user-images.githubusercontent.com/49618499/121579805-bd6bc980-ca34-11eb-84a5-b54ea7328ea0.png)
   
   **BOTH** - сообщения выводятся как в консоль, так и в файл.
